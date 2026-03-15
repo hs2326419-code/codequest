@@ -788,7 +788,7 @@ def _grade_python(code,test_input,expected):
     try:
         with tempfile.NamedTemporaryFile(mode='w',suffix='.py',delete=False) as f:
             f.write(runner); fname=f.name
-        r = subprocess.run(timeout=5, [sys.executable,fname],capture_output=True,text=True,timeout=5)
+       r = subprocess.run([sys.executable, fname], capture_output=True, text=True, timeout=5)
         actual = r.stdout.strip()
         if r.returncode!=0:
             return False, f'Runtime error: {r.stderr.strip().split(chr(10))[-1]}'
